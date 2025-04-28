@@ -1,7 +1,8 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
-from retriever import retrieve_context
-from generator import generate_answer
+from app.retriever import retrieve_context 
+from app.generator import generate_answer
+
 
 app = FastAPI()
 

@@ -20,7 +20,7 @@ User Question:
 
 Answer:"""
 
-    response = openai.ChatCompletion.create(
+    response = openai.completions.create(
         model="gpt-3.5-turbo",
         messages=[
             {"role": "system", "content": "You are a helpful plant care advisor."},

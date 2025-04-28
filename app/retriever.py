@@ -1,4 +1,4 @@
-from vectorstore import VectorStore
+from app.vectorstore import VectorStore
 
 # Initialize VectorStore
 vs = VectorStore()
