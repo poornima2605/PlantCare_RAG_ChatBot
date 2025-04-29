@@ -38,19 +38,17 @@ The **PlantCare RAG ChatBot** is an AI-powered assistant built using Retrieval-A
 
 ## 🏗️ Project Structure
 
-'''bash
+     .
+    ├── PlantCare_RAG_ChatBot/
+    ├── app/                   # FastAPI app and route definitions
+    │   ├── retriever.py       # Logic for retrieving relevant plant care info via vector search
+    │   ├── vectorstore.py     # Code for embedding documents and managing the FAISS vector store
+    │   └── documents/         # Folder containing raw plant care text documents (.txt files)
+    ├── Dockerfile             # Instructions to build and run the container
+    ├── requirements.txt       # List of Python packages required for the project
+    ├── README.md              # Project documentation
 
-PlantCare_RAG_ChatBot/
-├── app/
-│   ├── api.py             # FastAPI app and route definitions
-│   ├── retriever.py       # Logic for retrieving relevant plant care info via vector search
-│   ├── vectorstore.py     # Code for embedding documents and managing the FAISS vector store
-│   └── documents/         # Folder containing raw plant care text documents (.txt files)
-├── Dockerfile             # Instructions to build and run the container
-├── requirements.txt       # List of Python packages required for the project
-└── README.md              # Project documentation
 
-'''
 
 ---
 
