@@ -1,10 +1,12 @@
-import openai
+from openai import OpenAI
 import os
 from dotenv import load_dotenv
 
+# Load environment variables
 load_dotenv()
 
-openai.api_key = os.getenv("OPENAI_API_KEY")
+# Initialize OpenAI client with your API key
+client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
 def generate_answer(contexts, question):
     context_text = "\n\n".join(contexts)
@@ -20,7 +22,7 @@ User Question:
 
 Answer:"""
 
-    response = openai.completions.create(
+    response = client.chat.completions.create(
         model="gpt-3.5-turbo",
         messages=[
             {"role": "system", "content": "You are a helpful plant care advisor."},
@@ -29,4 +31,4 @@ Answer:"""
         temperature=0.3,
         max_tokens=500,
     )
-    return response['choices'][0]['message']['content']
+    return response.choices[0].message.content.strip()
