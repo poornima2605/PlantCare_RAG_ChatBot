@@ -16,7 +16,6 @@ The **PlantCare RAG ChatBot** is an AI-powered assistant built using Retrieval-A
 
 ## 🧩 System Architecture
 
-![System Architecture](https://airbyte.com/data-engineering-resources/rag-architecure-with-generative-ai)
 
 **Components:**
 - User sends a question via frontend or API.
@@ -29,7 +28,6 @@ The **PlantCare RAG ChatBot** is an AI-powered assistant built using Retrieval-A
 
 ## 🔄 Request Flow
 
-![Request Flow](https://medium.com/credera-engineering/build-a-simple-rag-chatbot-with-langchain-b96b233e1b2a)
 1. User submits a plant care question.
 2. Question is embedded using Sentence-BERT.
 3. Vector search finds relevant context.
@@ -40,15 +38,16 @@ The **PlantCare RAG ChatBot** is an AI-powered assistant built using Retrieval-A
 
 ## 🏗️ Project Structure
 
-PlantCare_RAG_ChatBot/ 
-├── app/ 
-│ ├── api.py # FastAPI app and routes 
-│ ├── retriever.py # Vector search logic 
-│ ├── vectorstore.py # Embedding & storage using Sentence-BERT 
-│ └── documents/ # Plant care text data 
-├── Dockerfile # Container setup 
-├── requirements.txt # Python dependencies 
-└── README.md # Project info
+PlantCare_RAG_ChatBot/
+├── app/
+│   ├── api.py             # FastAPI app and route definitions
+│   ├── retriever.py       # Logic for retrieving relevant plant care info via vector search
+│   ├── vectorstore.py     # Code for embedding documents and managing the FAISS vector store
+│   └── documents/         # Folder containing raw plant care text documents (.txt files)
+├── Dockerfile             # Instructions to build and run the container
+├── requirements.txt       # List of Python packages required for the project
+└── README.md              # Project documentation
+
 
 ---
 
