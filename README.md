@@ -86,7 +86,7 @@ docker run -p 8000:8000 plant-bot
 
 ## 💬 Usage
 
-Once the application is running, navigate to http://localhost:8000 in your browser. Enter your plant care questions, and the chatbot will provide informed responses based on the integrated knowledge base.
+Once the application is running, navigate to http://localhost:8000/docs in your browser. Enter your plant care questions, and the chatbot will provide informed responses based on the integrated knowledge base.
 
 ### 🧪 API Usage Example
 
