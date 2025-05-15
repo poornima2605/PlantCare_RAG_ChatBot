@@ -68,7 +68,7 @@ jobs:
         run: |
           pip install requests
           pip install pytest
-          pytest
+          nohup uvicorn pytest tests/
 
       - name: Stop container
         if: always()
