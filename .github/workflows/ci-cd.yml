@@ -67,7 +67,8 @@ jobs:
       - name: Run tests against container
         run: |
           pip install requests
-          python tests/test_app.py
+          pip install pytest
+          pytest
 
       - name: Stop container
         if: always()
