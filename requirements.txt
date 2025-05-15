@@ -3,6 +3,7 @@ uvicorn
 openai
 faiss-cpu
 python-dotenv
+python-multipart
 sentence-transformers==2.2.2
 transformers==4.31.0
 huggingface_hub==0.14.1

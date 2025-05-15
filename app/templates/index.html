@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>PlantCare ChatBot</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 2rem; max-width: 600px; margin: auto; }
+        input[type=text] { width: 100%; padding: 0.5rem; font-size: 1rem; }
+        button { margin-top: 1rem; padding: 0.5rem 1rem; font-size: 1rem; }
+        .answer { margin-top: 2rem; background: #f9f9f9; padding: 1rem; border-radius: 8px; border: 1px solid #ccc; }
+    </style>
+</head>
+<body>
+    <h2>🌱 Ask the PlantCare ChatBot</h2>
+    <form method="post">
+        <input type="text" name="question" placeholder="e.g. How often should I water a spider plant?" required>
+        <button type="submit">Ask</button>
+    </form>
+
+    {% if answer %}
+        <div class="answer">
+            <h4>Answer:</h4>
+            <p>{{ answer }}</p>
+        </div>
+    {% endif %}
+</body>
+</html>
