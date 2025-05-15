@@ -72,6 +72,10 @@ jobs:
           pip install requests
           pip install pytest
           pytest tests/
+      
+      - name: Print container logs (if it fails)
+        if: failure()
+        run: docker logs chatbot-test || true
 
       - name: Stop container
         if: always()
