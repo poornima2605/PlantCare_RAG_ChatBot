@@ -4,7 +4,7 @@ ENV PYTHONPATH=/app
 WORKDIR /app
 
 COPY requirements.txt .
-COPY vector.index documents.pkl /.env ./
+COPY vector.index documents.pkl ./
 RUN pip install --no-cache-dir -r requirements.txt
 
 COPY app/ app/
