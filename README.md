@@ -88,9 +88,9 @@ docker run -p 8000:8000 plant-bot
 
 Once the application is running, navigate to http://localhost:8000 in your browser. Enter your plant care questions, and the chatbot will provide informed responses based on the integrated knowledge base. Below is an example how the GUI in web browser looks like:
 
-![input prompt](https://github.com/poornima2605/PlantCare_RAG_ChatBot/tree/main/images/InputPromt.png?raw=true)
+![input prompt](https://github.com/poornima2605/PlantCare_RAG_ChatBot/blob/main/images/InputPrompt.png)
 
-![output](https://github.com/poornima2605/PlantCare_RAG_ChatBot/tree/main/images/Output.png?raw=true)
+![output](https://github.com/poornima2605/PlantCare_RAG_ChatBot/blob/main/images/Output.png?raw=true)
 
 
 ### 🧪 API Usage Example
