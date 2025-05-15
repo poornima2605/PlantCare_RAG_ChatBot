@@ -55,20 +55,23 @@ jobs:
     needs: docker-build
 
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
       - name: Pull Docker image
         run: |
           docker pull ${{ secrets.DOCKER_USERNAME }}/plantcare-chatbot:latest
 
       - name: Run container
         run: |
-          docker run -d --rm --name chatbot-test -p 8000:8000 ${{ secrets.DOCKER_USERNAME }}/plantcare-chatbot:latest
-          sleep 5
+          docker run -d --rm --name chatbot-test -p 8000:8000 ${{ secrets.DOCKER_USERNAME }}/plantcare-chatbot
+          sleep 10
 
       - name: Run tests against container
         run: |
           pip install requests
           pip install pytest
-          nohup uvicorn pytest tests/
+          pytest tests/
 
       - name: Stop container
         if: always()
