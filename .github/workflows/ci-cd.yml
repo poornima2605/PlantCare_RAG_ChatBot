@@ -67,6 +67,17 @@ jobs:
           docker run -d --rm --name chatbot-test -p 8000:8000 ${{ secrets.DOCKER_USERNAME }}/plantcare-chatbot
           sleep 100
 
+      - name: Wait for app to start
+        run: |
+          for i in {1..10}; do
+            echo "Checking if app is up (attempt $i)..."
+            if curl -s http://localhost:8000/ask -X POST -H "Content-Type: application/json" -d '{"question":"test"}' | grep -q "answer"; then
+              echo "App is up!"
+              break
+            fi
+            sleep 5
+          done
+
       - name: Run tests against container
         run: |
           pip install requests
