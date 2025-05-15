@@ -64,7 +64,7 @@ jobs:
 
       - name: Run container
         run: |
-          docker run -d --rm --name chatbot-test -p 8000:8000 ${{ secrets.DOCKER_USERNAME }}/plantcare-chatbot
+          docker run -d --rm --name chatbot-test -p 8000:8000 -e OPENAI_API_KEY=${{ secrets.OPENAI_API_KEY }} ${{ secrets.DOCKER_USERNAME }}/plantcare-chatbot
           sleep 100
 
       - name: Wait for app to start

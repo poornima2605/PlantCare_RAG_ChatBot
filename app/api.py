@@ -3,9 +3,6 @@ from pydantic import BaseModel
 from app.retriever import retrieve_context 
 from app.generator import generate_answer
 
-from dotenv import load_dotenv
-load_dotenv()
-
 app = FastAPI()
 
 class QueryRequest(BaseModel):
