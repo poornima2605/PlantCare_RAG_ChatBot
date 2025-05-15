@@ -65,7 +65,7 @@ jobs:
       - name: Run container
         run: |
           docker run -d --rm --name chatbot-test -p 8000:8000 ${{ secrets.DOCKER_USERNAME }}/plantcare-chatbot
-          sleep 10
+          sleep 100
 
       - name: Run tests against container
         run: |
