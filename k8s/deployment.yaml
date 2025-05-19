@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: chatbot
-        image: ${{ secrets.DOCKER_USERNAME }}/plantcare-chatbot:latest
+        image: ${{ secrets.DOCKER_USERNAME }}/plantcare-chatbot
         ports:
         - containerPort: 8000
         env:
