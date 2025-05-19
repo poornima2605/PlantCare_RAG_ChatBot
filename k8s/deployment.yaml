@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: plantcare-chatbot
+  labels:
+    app: plantcare-chatbot
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: plantcare-chatbot
+  template:
+    metadata:
+      labels:
+        app: plantcare-chatbot
+    spec:
+      containers:
+      - name: chatbot
+        image: ${{ secrets.DOCKER_USERNAME }}/plantcare-chatbot:latest
+        ports:
+        - containerPort: 8000
+        env:
+        - name: OPENAI_API_KEY
+          valueFrom:
+            secretKeyRef:
+              name: openai-api-secret
+              key: ${{ secrets.OPENAI_API_KEY }}

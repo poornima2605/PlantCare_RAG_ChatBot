@@ -91,3 +91,22 @@ jobs:
       - name: Stop container
         if: always()
         run: docker stop chatbot-test
+    
+  deploy-to-kubernetes:
+    runs-on: ubuntu-latest
+    needs: test-docker-image
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up kubeconfig
+        run: |
+          mkdir -p ~/.kube
+          echo "${{ secrets.KUBECONFIG }}" > ~/.kube/config
+          chmod 600 ~/.kube/config
+
+      - name: Deploy to Kubernetes
+        run: |
+          kubectl apply -f k8s/deployment.yaml
+          kubectl apply -f k8s/service.yaml
