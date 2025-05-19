@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: chatbot
-        image: docker-username/plantcare-chatbot
+        image: poornimakaushik/plantcare-chatbot
         ports:
         - containerPort: 8000
         env:
