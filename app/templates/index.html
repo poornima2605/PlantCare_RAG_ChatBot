@@ -20,6 +20,12 @@
         <div class="answer">
             <h4>Answer:</h4>
             <p>{{ answer }}</p>
+
+            {% if image_url %}
+                <div style="margin-top: 1rem;">
+                    <img src="{{ image_url }}" alt="Related plant image" style="max-width: 100%; border-radius: 8px;">
+                </div>
+            {% endif %}
         </div>
     {% endif %}
 </body>

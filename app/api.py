@@ -5,6 +5,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from app.retriever import retrieve_context 
 from app.generator import generate_answer
+from app.utils import extract_plant_name, search_image
 
 app = FastAPI()
 templates = Jinja2Templates(directory="app/templates")
@@ -38,4 +39,13 @@ async def form_get(request: Request):
 async def form_post(request: Request, question: str = Form(...)):
     retrieved_docs = retrieve_context(question)
     answer = generate_answer(retrieved_docs, question)
-    return templates.TemplateResponse("index.html", {"request": request, "answer": answer})
+
+    # --- Image Search Integration ---
+    plant_name = extract_plant_name(question)
+    image_url = search_image(plant_name or question)
+
+    return templates.TemplateResponse("index.html", {
+        "request": request,
+        "answer": answer,
+        "image_url": image_url,
+    })
