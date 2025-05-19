@@ -116,7 +116,7 @@ Automated pipeline includes:
 
 #### Step 1: Clone the Repository:
 
-git clone https://github.com/yourusername/plantcare-rag-chatbot.git
+git clone https://github.com/poornima2605/plantcare-rag-chatbot.git
 cd plantcare-rag-chatbot
 
 #### Step 2: Set Up Environment Variables:
