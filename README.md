@@ -1,20 +1,44 @@
 # 🌿 PlantCare RAG ChatBot
 
-The **PlantCare RAG ChatBot** is an AI-powered assistant built using Retrieval-Augmented Generation (RAG) that provides helpful information and personalized advice on plant care. Whether you're a seasoned gardener or a houseplant newbie, this chatbot leverages natural language processing to answer your questions based on custom plant care documents and models.
+A lightweight, intelligent chatbot that answers user queries about plant care using Retrieval-Augmented Generation (RAG). Built with **FastAPI**, **OpenAI**, and enhanced with **dynamic image search** to show relevant plant visuals alongside answers.
 
 ---
 
-## 🚀 Features
+## Features
 
-- 🌱 **Plant care Q&A**: Ask questions about watering, light, soil, and more.
-- 🔎 **Retrieval-Augmented Generation (RAG)**: Combines vector search with LLMs to provide accurate and grounded answers.
-- 🧠 **Sentence-BERT embeddings**: For high-quality semantic search using the `all-MiniLM-L6-v2` model.
-- 📁 **Custom document support**: Easily extend knowledge base with your own plant care files.
-- ⚡ **FastAPI + Uvicorn backend**: Lightweight and production-ready API.
+- Semantic search-based context retrieval (RAG)
+- Natural language answer generation using OpenAI GPT
+- Image search integration using Unsplash API
+- Web-based interface with FastAPI + Jinja2 templates
+- CI/CD with Docker & GitHub Actions
+- Kubernetes deployment via AWS EKS (Elastic Kubernetes Service)
 
 ---
 
-## 🧩 System Architecture
+## Image Search Support
+
+The chatbot now enriches responses with **relevant plant images**, fetched dynamically using the [Unsplash API](https://unsplash.com/developers).
+
+> Example:  
+> **Question**: _"How much water does a rose plant need?"_  
+> **Answer**: _"Rose plants typically need deep watering twice a week..."_  
+> **Image**: A real-time photo of a rose plant is shown below the answer.
+
+---
+
+## Tech Stack
+
+- **Backend**: FastAPI
+- **LLM Integration**: OpenAI API
+- **Context Retrieval**: Custom semantic retriever
+- **Frontend**: HTML (Jinja2 templating)
+- **Image API**: Unsplash
+- **CI/CD**: GitHub Actions + Docker
+- **Deployment**: Kubernetes (AWS EKS)
+
+---
+
+## System Architecture
 
 
 **Components:**
@@ -26,28 +50,53 @@ The **PlantCare RAG ChatBot** is an AI-powered assistant built using Retrieval-A
 
 ---
 
-## 🔄 Request Flow
+## CI/CD & DevOps Workflow
+
+### Dockerized App
+
+- Docker image builds using `Dockerfile`
+- Optimized for lightweight deployment
+
+### 🔄 GitHub Actions
+
+Automated pipeline includes:
+
+- Linting & tests
+- Docker image build
+- Push to DockerHub or ECR
+- Kubernetes deployment
+
+### ☸️ Kubernetes on EKS
+
+- YAML manifests for Deployments & Services
+- Helm chart support (optional)
+- Secrets, ConfigMaps & autoscaling in production
+
+---
+
+## Request Flow
 
 1. User submits a plant care question.
 2. Question is embedded using Sentence-BERT.
-3. Vector search finds relevant context.
+3. Vector search finds relevant context and image using unsplash API.
 4. Context + question are passed to the language model.
 5. Response is returned via the FastAPI endpoint.
+6. Image search search result is displayed.
 
 ---
 
 ## 🏗️ Project Structure
 
-     .
+     
     ├── PlantCare_RAG_ChatBot/
     ├── app/                   # FastAPI app and route definitions
     │   ├── retriever.py       # Logic for retrieving relevant plant care info via vector search
     │   ├── vectorstore.py     # Code for embedding documents and managing the FAISS vector store
-    │   └── documents/         # Folder containing raw plant care text documents (.txt files)
+    │   ├── documents/         # Folder containing raw plant care text documents (.txt files)
+    │   └── utils/             # Additional helper files
     ├── Dockerfile             # Instructions to build and run the container
     ├── requirements.txt       # List of Python packages required for the project
     ├── README.md              # Project documentation
-
 
 
 ---
@@ -59,9 +108,11 @@ The **PlantCare RAG ChatBot** is an AI-powered assistant built using Retrieval-A
 1. Python 3.9+
 2. Docker
 3. OpenAI API Key​
+4. Unsplash API key
+5. EKS clous credentials and setup knowledge (Optional)
 
 
-### Steps:
+### Steps Locally to run app:
 
 #### Step 1: Clone the Repository:
 
