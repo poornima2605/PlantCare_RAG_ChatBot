@@ -57,7 +57,7 @@ The chatbot now enriches responses with **relevant plant images**, fetched dynam
 - Docker image builds using `Dockerfile`
 - Optimized for lightweight deployment
 
-### 🔄 GitHub Actions
+### GitHub Actions
 
 Automated pipeline includes:
 
@@ -66,7 +66,7 @@ Automated pipeline includes:
 - Push to DockerHub or ECR
 - Kubernetes deployment
 
-### ☸️ Kubernetes on EKS
+### Kubernetes on EKS
 
 - YAML manifests for Deployments & Services
 - Helm chart support (optional)
@@ -85,7 +85,7 @@ Automated pipeline includes:
 
 ---
 
-## 🏗️ Project Structure
+## Project Structure
 
      
     ├── PlantCare_RAG_ChatBot/
@@ -101,7 +101,7 @@ Automated pipeline includes:
 
 ---
 
-## 🛠️ Setup & Installation
+## Setup & Installation
 
 ### Prerequisites:
 
@@ -135,7 +135,7 @@ docker run -p 8000:8000 plant-bot
 
 ---
 
-## 💬 Usage
+## Usage
 
 Once the application is running, navigate to http://localhost:8000 in your browser. Enter your plant care questions, and the chatbot will provide informed responses based on the integrated knowledge base. Below is an example how the GUI in web browser looks like:
 
@@ -144,7 +144,7 @@ Once the application is running, navigate to http://localhost:8000 in your brows
 ![output](https://github.com/poornima2605/PlantCare_RAG_ChatBot/blob/main/images/Output.png?raw=true)
 
 
-### 🧪 API Usage Example
+### API Usage Example
 
 Endpoint: /query
 Method: POST
@@ -162,7 +162,7 @@ Response:
 
 ---
 
-## 🧰 Tech Stack
+## Tech Stack
 
 1. **FastAPI**: Web framework for building APIs
 2. **Uvicorn**: ASGI server FastAPI server
@@ -172,7 +172,7 @@ Response:
 
 ---
 
-## 📄 Customizing the Knowledge Base
+## Customizing the Knowledge Base
 
 1. Add your .txt to the app/documents/ directory.
 2. Rebuild the vector store by running app/create_index.py "path_to_new_txt".
