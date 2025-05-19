@@ -107,13 +107,6 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ secrets.AWS_REGION }}
 
-      - name: Ensure OpenAI Secret exists
-        run: |
-          if ! kubectl get secret openai-api-secret > /dev/null 2>&1; then
-            kubectl create secret generic openai-api-secret \
-              --from-literal=OPENAI_API_KEY=${{ secrets.OPENAI_API_KEY }}
-          fi
-
       - name: Set up kubectl
         uses: azure/setup-kubectl@v3
         with:
@@ -122,6 +115,13 @@ jobs:
       - name: Update kubeconfig for EKS
         run: |
           aws eks update-kubeconfig --region ${{ secrets.AWS_REGION }} --name plantcare-cluster
+
+      - name: Ensure OpenAI Secret exists
+        run: |
+          if ! kubectl get secret openai-api-secret > /dev/null 2>&1; then
+            kubectl create secret generic openai-api-secret \
+              --from-literal=OPENAI_API_KEY=${{ secrets.OPENAI_API_KEY }}
+          fi
 
       - name: Deploy to EKS
         run: |
