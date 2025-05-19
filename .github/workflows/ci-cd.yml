@@ -144,6 +144,7 @@ jobs:
       - name: Port forwarding to run Pytests
         run: |
           kubectl port-forward service/plantcare-chatbot-service 8000:80 &
+          pip install pytest
           pytest
         
       - name: Scale deployment to zero
