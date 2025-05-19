@@ -122,6 +122,14 @@ jobs:
             kubectl create secret generic openai-api-secret \
               --from-literal=OPENAI_API_KEY=${{ secrets.OPENAI_API_KEY }}
           fi
+      
+      - name: Ensure Docker Secret exists
+        run: |
+          if ! kubectl get secret docker-credentials > /dev/null 2>&1; then
+            kubectl create secret docker-registry docker-credentials \
+              --docker-username=${{ secrets.DOCKER_USERNAME }} \
+              --docker-password=${{ secrets.DOCKER_PASSWORD }} 
+          fi
 
       - name: Deploy to EKS
         run: |
