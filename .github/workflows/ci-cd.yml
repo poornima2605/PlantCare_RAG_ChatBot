@@ -92,7 +92,7 @@ jobs:
         if: always()
         run: docker stop chatbot-test
     
-  deploy-to-eks:
+  deploy-to-eks-cluster-and-test:
     runs-on: ubuntu-latest
     needs: test-docker-image
 
@@ -114,7 +114,7 @@ jobs:
 
       - name: Update kubeconfig for EKS
         run: |
-          aws eks update-kubeconfig --region ${{ secrets.AWS_REGION }} --name plantcare-cluster
+          aws eks update-kubeconfig --region ${{ secrets.AWS_REGION }} --name plantcare-chatbot:latest
 
       - name: Ensure OpenAI Secret exists
         run: |
@@ -127,19 +127,18 @@ jobs:
         run: |
           kubectl apply -f k8s/deployment.yaml
           kubectl apply -f k8s/service.yaml
+          sleep 100
 
       - name: Wait for rollout to complete
         run: |
           kubectl rollout status deployment/plantcare-chatbot
-                
-      - name: Configure AWS credentials
-        uses: aws-actions/configure-aws-credentials@v2
-        with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: us-west-2  # or your actual region
-        
-      - name: Delete EKS cluster
+      
+      - name: Port forwarding to run Pytests
         run: |
-          eksctl delete cluster --name plantcare-cluster --region us-west-2
+          kubectl port-forward service/plantcare-chatbot-service 8000:80 &
+          pytest
+        
+      - name: Scale deployment to zero
+        run: |
+          kubectl scale deployment plantcare-chatbot --replicas=0
   
