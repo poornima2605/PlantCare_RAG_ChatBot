@@ -114,7 +114,7 @@ jobs:
 
       - name: Update kubeconfig for EKS
         run: |
-          aws eks update-kubeconfig --region ${{ secrets.AWS_REGION }} --name plantcare-chatbot:latest
+          aws eks update-kubeconfig --region ${{ secrets.AWS_REGION }} --name plantcare-chatbot
 
       - name: Ensure OpenAI Secret exists
         run: |
