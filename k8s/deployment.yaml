@@ -24,4 +24,4 @@ spec:
           valueFrom:
             secretKeyRef:
               name: openai-api-secret
-              key: ${{ secrets.OPENAI_API_KEY }}
+              key: OPENAI_API_KEY
